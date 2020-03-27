@@ -1,0 +1,25 @@
+=============================================================
+Command line commands to create a Linux shared library
+=============================================================
+Goal: Reuse code by packaging it into a dynamically linked
+library be shared with other projects to building 
+executables or other libraries.
+
+-------------------------------------------------------------
+1. To create the object (*.o) file:
+$ gcc -c -Wall -Werror -fpic OLList.cpp
+
+produces an OLList.o file
+
+-------------------------------------------------------------
+2. Link into shared library:
+
+$ gcc -shared -o libollist.so OLList.o
+
+creates a libollist.so* linkable library
+
+3. Move the library to where it will be searched by other
+projects.
+
+$ mv libollist.so* ../lib .
+-------------------------------------------------------------
