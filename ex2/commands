@@ -1,0 +1,6 @@
+Taken from: https://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
+
+Build with:
+
+$ gcc -L/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/lib -Wall -o l6e2 main.cpp -lollist
+

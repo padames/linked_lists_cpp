@@ -5,6 +5,7 @@
 #ifndef OLLIST_H
 #define OLLIST_H
 
+
 typedef int ListItem;
 
 struct Node {
