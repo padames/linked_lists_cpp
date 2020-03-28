@@ -10,7 +10,7 @@ void displayHeader() {
     cout << "" << endl;
 }
 
-int readData(FlowList x) {
+int readData(FlowList* x) {
 
     return 0;
 }
@@ -21,7 +21,7 @@ int menu(){
 
 
 int main() {
-   FlowList x;
+   FlowList* x = new FlowList();
    int numRecords;
    displayHeader();
    numRecords = readData(x);
