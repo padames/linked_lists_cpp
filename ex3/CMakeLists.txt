@@ -3,4 +3,4 @@ project(ex3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ex3 main.cpp FlowList.cpp FlowList.h)
+add_executable(ex3 main.cpp flowlist.cpp flowlist.h hydro.cpp hydro.h)

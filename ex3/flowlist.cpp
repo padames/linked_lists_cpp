@@ -4,8 +4,9 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <iomanip>
 
-#include "FlowList.h"
+#include "flowlist.h"
 
 using namespace std;
 
@@ -44,15 +45,31 @@ FlowList::~FlowList()
     destroy();
 }
 
+//int year; double flow;
+//while(inFile >> year >> flow) {
+
+//countRecords++;
+//}
+//cout << setw(24) << "====================================";
+
 void FlowList::print() const
 {
-    cout << '[';
+    ostringstream ss;
+    cout << setw(24) << "===============================" << endl;
+    ss.setf(ios_base::left, ios_base::adjustfield);
+    ss << setw(10) << "Year" << setw(15) << "Flow (billion m3)" << endl;
+    cout << ss.str();
+    ss.clear(); ss.str("");
+    cout << setw(24) << "===============================" << endl;
     if (headM != nullptr) {
-        cout << ' ' << headM->item;
-        for (const Node *p = headM->next; p != nullptr; p = p->next)
-            cout << ", " << p->item;
+        for (const Node *p = headM->next; p != nullptr; p = p->next) {
+            ss << setw(10) << p->item.year << setw(6) << p->item.flow;
+            cout << ss.str() << endl;
+            ss.clear();
+            ss.str("");
+        }
     }
-    cout << " ]\n";
+    cout << setw(24) << "===============================" << endl;
 }
 
 void FlowList::insert(const ListItem& itemA)
@@ -78,36 +95,36 @@ void FlowList::insert(const ListItem& itemA)
     }
 }
 
-void FlowList::remove(const ListItem& itemA)
+void FlowList::remove(int targetYear)
 {
     // if list is empty, do nothing
-    if (headM == nullptr || itemA < headM->item)
-        return;
-
-    Node *doomed_node = nullptr;
-
-    if (itemA == headM->item) {
-        doomed_node = headM;
-        headM = headM->next;
-    }
-    else {
-        Node *before = headM;
-        Node *maybe_doomed = headM->next;
-        while ( nullptr != maybe_doomed && itemA > maybe_doomed->item) {
-            before = maybe_doomed;
-            maybe_doomed = maybe_doomed->next;
-        }
-        if (nullptr != maybe_doomed) {
-            if (itemA == maybe_doomed->item) {
-                doomed_node = maybe_doomed;
-                before->next = maybe_doomed->next;
-            }
-        }
-        // point three
-        if (nullptr != doomed_node) {
-            delete doomed_node;
-        }
-    }
+//    if (headM == nullptr || itemA < headM->item)
+//        return;
+//
+//    Node *doomed_node = nullptr;
+//
+//    if (itemA == headM->item) {
+//        doomed_node = headM;
+//        headM = headM->next;
+//    }
+//    else {
+//        Node *before = headM;
+//        Node *maybe_doomed = headM->next;
+//        while ( nullptr != maybe_doomed && itemA > maybe_doomed->item) {
+//            before = maybe_doomed;
+//            maybe_doomed = maybe_doomed->next;
+//        }
+//        if (nullptr != maybe_doomed) {
+//            if (itemA == maybe_doomed->item) {
+//                doomed_node = maybe_doomed;
+//                before->next = maybe_doomed->next;
+//            }
+//        }
+//        // point three
+//        if (nullptr != doomed_node) {
+//            delete doomed_node;
+//        }
+//    }
 }
 
 bool FlowList::empty() const {
