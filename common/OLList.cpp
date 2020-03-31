@@ -12,11 +12,20 @@ OLList::OLList()
 {
 }
 
+/**
+ *  safe copy constructor
+ * @param source
+ */
 OLList::OLList(const OLList& source)
 {
     copy(source);
 }
 
+/**
+ * Assignment operator
+ * @param rhs another OLList object
+ * @return a reference to the self
+ */
 OLList& OLList::operator =(const OLList& rhs)
 {
     if (this != &rhs) {
@@ -106,7 +115,6 @@ bool OLList::empty() const {
 
 void OLList::destroy()
 {
-//    cout << "OLList::destroy was called" << endl;
     if (!empty()) {
         Node* p_this = headM;
         while (nullptr != p_this) {
@@ -137,6 +145,8 @@ void OLList::copy(const OLList& source)
             p_other = p_other->next;
             p_this->item = p_other->item;
         }
+    } else {
+        headM = nullptr;
     }
 }
 

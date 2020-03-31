@@ -10,53 +10,79 @@ using namespace std;
 
 int main()
 {
-  OLList the_list;
+    cout << "\nPart One: copy" << endl;
 
-  cout << "List just after creation: " << endl;
-  the_list.print();
-  the_list.insert(330);
-  the_list.insert(440);
-  the_list.insert(220);
-  the_list.insert(110);
-  cout << "List after some insertions: " << endl;
-  the_list.print();
-  the_list.remove(110);
-  cout << "List after removing from head: " << endl;
-  the_list.print();
-  the_list.remove(550);
-  the_list.remove(440);
-  cout << "List after some more removals: " << endl;
-  the_list.print();
+    OLList the_list;
 
-  cout << endl;
-  OLList second_list;
+    cout << "'the_list'' after creation: " << endl;
+    the_list.print();
 
-  cout << "Second list just after creation: " << endl;
-  second_list.print();
-  second_list.insert(330);
-  second_list.insert(440);
-  second_list.insert(220);
-  second_list.insert(550);
-  second_list.insert(110);
-  cout << "Second list after some insertions: " << endl;
-  second_list.print();
+    cout << "\n(1a) copy of an empty list via 'new_list = the_list;'" << endl;
 
-  OLList another_list(second_list);
-  cout << "Second list just created a new copy" << endl;
-  another_list.print();
+    OLList new_list = the_list;
 
-  cout << "Removed 440 from the copied list" << endl;
-  another_list.remove(440);
-  another_list.print();
+    new_list.print();
 
-  cout << "original second list:" << endl;
-  second_list.print();
+    cout << "\n(1b) copy of an empty list via 'a_new_list(the_list);'" << endl;
 
-  cout << "Creating yet another list with copy operator" << endl;
+    OLList a_new_list(the_list);
 
-  OLList a_third_list = another_list;
+    a_new_list.print();
 
-  a_third_list.print();
+    cout << "Adding `330` to 'the_list'" << endl;
 
-  return 0;
+    the_list.insert(330);
+
+    cout << "\n(2a) copy of an list with only one item via 'new_list = the_list'" << endl;
+
+    new_list = the_list;
+
+    new_list.print();
+
+    cout << "\n(2b) copy of an list with only one item via 'another_new_list(the_list)'" << endl;
+
+    OLList another_new_list(the_list);
+
+    another_new_list.print();
+
+    cout << "Adding more items to `the_list`" << endl;
+
+    the_list.insert(440);
+    the_list.insert(220);
+    the_list.insert(110);
+    cout << "`the_list` after some insertions: " << endl;
+    the_list.print();
+
+    cout << "\n(3a) copy of a list with multiple values via yet_another_list = the_list" << endl;
+
+    auto yet_another_list = the_list;
+
+    yet_another_list.print();
+
+    cout << "\n(3b) copy of a list with multiple values via `yet_another_new_list(the_list);``" << endl;
+
+    OLList yet_another_new_list(the_list);
+    yet_another_new_list.print();
+
+
+    cout << "\nPart Two: destroy" << endl;
+
+    cout << "\nRemoving `110 from `the_list`" << endl;
+
+    the_list.remove(110);
+
+    cout << "\nList after removing `110`: " << endl;
+    the_list.print();
+
+    cout << "\n`yet_another_new_list` after `the_list was changed" << endl;
+
+    yet_another_new_list.print();
+
+    the_list.remove(550);
+    the_list.remove(440);
+    cout << "\nthe_list after some more removals: " << endl;
+    the_list.print();
+
+
+    return 0;
 }
