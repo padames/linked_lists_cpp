@@ -2,8 +2,8 @@
 // Created by pablo on 2020-03-27.
 //
 
-#ifndef EX3_FLOWLIST_H
-#define EX3_FLOWLIST_H
+#ifndef EX3_LIST_H
+#define EX3_LIST_H
 
 #include <iostream>
 
@@ -20,7 +20,6 @@ bool operator<(const ListItem& one, const ListItem& other);
 bool operator>(const ListItem& one, const ListItem& other);
 
 std::ostream& operator<<(std::ostream& os, const ListItem& obj);
-
 
 
 struct Node {
@@ -72,6 +71,7 @@ public:
     int count () const;
     // PROMISES: returns the number of nodes in the list.
 
+
     void print() const;
     // PROMISES:
     //   Prints items in list on a single line, with commas separating
@@ -92,6 +92,11 @@ private:
      */
     Node *cursorM;
 
+    int counter;
+
+    void increaseCounter() {counter++;}
+    void decreaseCounter() {counter--;}
+
     /**
      * Deallocate all nodes, set headM to nullptr.
      */
@@ -105,7 +110,7 @@ private:
 
 };
 
-#endif //EX3_FLOWLIST_H
+#endif //EX3_LIST_H
 
 
 

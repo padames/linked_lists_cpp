@@ -5,10 +5,23 @@
 #ifndef EX3_HYDRO_H
 #define EX3_HYDRO_H
 
+#include "list.h"
 
-class hydro {
+class Hydro {
+public:
+    Hydro();
+    int readData();
+    void displayHeader();
+    int menu();
+    void displayListAverageMedian();
+    void callPressEnter();
+    void addData();
+
+private:
+
+    double* calcStats();
+
+    FlowList* flowList;
 
 };
-
-
 #endif //EX3_HYDRO_H

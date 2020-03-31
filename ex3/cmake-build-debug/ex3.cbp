@@ -84,16 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/flowlist.cpp">
-			<Option target="ex3"/>
-		</Unit>
-		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/flowlist.h">
-			<Option target="ex3"/>
-		</Unit>
 		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/hydro.cpp">
 			<Option target="ex3"/>
 		</Unit>
 		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/hydro.h">
+			<Option target="ex3"/>
+		</Unit>
+		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/list.cpp">
+			<Option target="ex3"/>
+		</Unit>
+		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/list.h">
 			<Option target="ex3"/>
 		</Unit>
 		<Unit filename="/home/pablo/Desktop/ENSF607/Labs/06/linked_lists_cpp/ex3/main.cpp">
