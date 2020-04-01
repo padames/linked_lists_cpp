@@ -120,7 +120,7 @@ void Hydro::displayListAverageMedian() {
 
 void Hydro::addData() {
     cout << "Please enter a year: ";
-    double year;
+    int year;
     cin >> year;
     cout << "Please enter the flow: ";
     double flow;
@@ -143,9 +143,35 @@ void Hydro::addData() {
     }
     if (!duplicateYear) {
         flowList->insert(newData);
-        cout << " New record inserted successfully." << endl;
+        cout << "\nNew record inserted successfully." << endl;
     } else {
-        cout << "Error: duplicate data\n";
+        cout << "\nError: duplicate data\n";
     }
+}
 
+void Hydro::saveData() {
+    string fileName = "../../data/flow.txt";
+    ofstream outFile(fileName);
+    if (!outFile) {
+        cerr << "Could not open file '" << fileName << "' for writing.";
+    } else {
+        ostringstream ss;
+        flowList->reset();
+        const Node *c = flowList->cursor();
+        while(nullptr != c) {
+            ss << c->item.year << "      " << c->item.flow << endl;
+            outFile << ss.str();
+            ss.clear(); ss.str("");
+            flowList->forward();
+            c = flowList->cursor();
+        }
+    }
+    cout << "\nData saved to file." << endl;
+}
+
+void Hydro::removeData() {
+    cout << "Please enter the year that you want removed: ";
+    int year;
+    cin >> year;
+    flowList->remove(year);
 }

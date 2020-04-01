@@ -72,7 +72,7 @@ void FlowList::insert(const ListItem& itemA)
     Node *new_node = new Node;
     new_node->item = itemA;
 
-    if ( (nullptr == headM) || (itemA.flow <= headM->item.flow) ) {
+    if ( (nullptr == headM) || ((itemA.flow) <= (headM->item.flow)) ) {
         new_node->next = headM;
         headM = new_node;
         // point one
@@ -80,7 +80,7 @@ void FlowList::insert(const ListItem& itemA)
     else {
         Node *before = headM;      // will point to node in front of new node
         Node *after = headM->next; // will be 0 or point to node after new node
-        while(after != nullptr && itemA.flow > after->item.flow) {
+        while( (nullptr != after) && ( (itemA.flow) > (after->item.flow))) {
             before = after;
             after = after->next;
         }
@@ -92,39 +92,44 @@ void FlowList::insert(const ListItem& itemA)
     cursorM = nullptr;
 }
 
+/**
+ * this list is ordered by flow, not year.
+ * You hve to visit all the nodes comparing the year until
+ * finding if it is present and remove it or do nothing.
+ * @param targetYear
+ */
 void FlowList::remove(int targetYear)
 {
     // if list is empty, do nothing
-    if (headM == nullptr || targetYear < headM->item.year)
+    if (headM == nullptr)
         return;
-
-    Node *doomed_node = nullptr;
-
     if (targetYear == headM->item.year) {
-        doomed_node = headM;
+        Node* temp = headM;
         headM = headM->next;
+        delete temp;
     }
-    else {
-        Node *before = headM;
-        Node *maybe_doomed = headM->next;
-        while ( nullptr != maybe_doomed && targetYear > maybe_doomed->item.year) {
-            before = maybe_doomed;
-            maybe_doomed = maybe_doomed->next;
+    bool found = false;
+    reset();
+    const Node *c = cursor();
+    forward();
+    Node *b = headM;
+    while(nullptr != c ) {
+        if( targetYear == c->item.year) {
+            found= true;
+            break;
         }
-        if (nullptr != maybe_doomed) {
-            if (targetYear == maybe_doomed->item.year) {
-                doomed_node = maybe_doomed;
-                before->next = maybe_doomed->next;
-            }
-        }
-        // point three
+        b = b->next;
+        forward();
+        c = cursor();
     }
-    if (nullptr != doomed_node) {
-        delete doomed_node;
+    if (found) {
+        b->next = c->next;
+        delete c;
         cursorM = nullptr;
         decreaseCounter();
+        cout << "\nRecord was successfully removed " << endl;
     } else {
-        cout << "\nYear " << targetYear << " not found, nothing to do!" << endl;
+        cout << "\nError: no such data." << endl;
     }
 }
 

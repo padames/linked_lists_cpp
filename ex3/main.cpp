@@ -19,14 +19,13 @@ int main() {
                 case 2:
                     hydro.addData();
                     hydro.callPressEnter();
-                    //              call pressEnter;
                     break;
                 case 3:
-                   //              call saveData function;
+                   hydro.saveData();
                    hydro.callPressEnter();
                    break;
                 case 4:
-                   //                call removeData
+                   hydro.removeData();
                    hydro.callPressEnter();
                    break;
                 case 5:

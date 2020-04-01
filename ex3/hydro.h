@@ -16,6 +16,8 @@ public:
     void displayListAverageMedian();
     void callPressEnter();
     void addData();
+    void saveData();
+    void removeData();
 
 private:
 
